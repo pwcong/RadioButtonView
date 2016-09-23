@@ -2,7 +2,7 @@
 
 一个简单单选按钮。
 
-![SnapShot](https://github.com/pwcong/SnapShot/blob/master/RadioButtonView/GIF.gif)
+![SnapShot](https://github.com/pwcong/SnapShot/blob/master/RadioButtonView/GIF2.gif)
 
 ****************
 
@@ -76,7 +76,7 @@ To get a Git project into your build:
 
 ```
 
-# Here are the attributes of RadioButtonView
+## Here are the attributes of RadioButtonView
 
 ```
     <declare-styleable name="RadioButtonView">
@@ -90,6 +90,19 @@ To get a Git project into your build:
 
 ```
 
+****************
+
+# Recently
+
+## v1.0.1
+
+* 修复边距过大问题调节字体大小
+* 调节字体大小
+* 增加预点击时填充色块
+
+## v1.0.0
+
+简单实现单选按钮。
 
 
 
