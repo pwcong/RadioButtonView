@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RadioButtonView</string>
+
+
+    <string-array name="radioItems">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+    </string-array>
+
+
+
+</resources>
