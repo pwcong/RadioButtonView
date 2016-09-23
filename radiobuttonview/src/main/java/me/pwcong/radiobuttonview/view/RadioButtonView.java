@@ -23,7 +23,7 @@ public class RadioButtonView extends View {
 
     public static final int BLUE=0xff2196F3;
 
-    float k = 0.552284749831f;
+    final float k = 0.552284749831f;
     boolean updated=false;
 
     Paint mPaint;
@@ -39,10 +39,11 @@ public class RadioButtonView extends View {
     float textSize;
 
 
-    float margin;
-    int frameColor;
-    int textColor;
-    float strokeWidth;
+    // 一下为可定制属性
+    float margin        =   4.0f;
+    int frameColor      =   BLUE;
+    int textColor       =   Color.WHITE;
+    float strokeWidth   =   2.0f;
 
     ArrayList<String> options    =   null;
 
