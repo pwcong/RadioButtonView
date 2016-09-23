@@ -15,24 +15,24 @@
     <me.pwcong.radiobuttonview.view.RadioButtonView
         android:id="@+id/rbv_1"
         android:layout_width="500dp"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true" />
 
     <me.pwcong.radiobuttonview.view.RadioButtonView
         android:id="@+id/rbv_2"
         android:layout_width="300dp"
-        android:layout_height="150dp"
+        android:layout_height="80dp"
         android:layout_below="@+id/rbv_1"
         app:frameColor="#FF4081"
         app:textColor="#FFFFFF"
-        app:strokeWidth="6dp"
+        app:strokeWidth="3dp"
         app:margin="12dp"
         android:layout_centerHorizontal="true" />
 
     <me.pwcong.radiobuttonview.view.RadioButtonView
         android:id="@+id/rbv_3"
         android:layout_width="400dp"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:layout_below="@+id/rbv_2"
         app:margin="8dp"
         app:strokeWidth="4dp"

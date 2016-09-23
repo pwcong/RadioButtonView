@@ -18,7 +18,6 @@ import me.pwcong.radiobuttonview.R;
 /**
  * Created by Pwcong on 2016/9/22.
  */
-
 public class RadioButtonView extends View {
 
 
@@ -31,11 +30,12 @@ public class RadioButtonView extends View {
 
     int width;
     int height;
-    int length      =   0;
-    int current     =   0;
-    int old_current =   0;
-    float radius    =   -1;
-    float eachWidth =   0;
+    int length          =   0;
+    int current         =   0;
+    int old_current     =   0;
+    int click_current   =   -1;
+    float radius        =   -1;
+    float eachWidth     =   0;
     float textSize;
 
 
@@ -88,7 +88,7 @@ public class RadioButtonView extends View {
         }
 
         drawFrame(canvas);
-
+        drawClickedFrame(canvas);
         drawText(canvas);
 
 
@@ -100,26 +100,49 @@ public class RadioButtonView extends View {
 
         switch (event.getAction()){
 
-            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_DOWN:
 
-                float x = event.getX();
-                float y = event.getY();
+                float x1 = event.getX();
+                float y1 = event.getY();
 
-                if(y>height/2.0f-radius&&y<height/2.0f+radius){
+                if(y1>height/2.0f-radius&&y1<height/2.0f+radius){
 
-                    current=(int)((x-margin)/eachWidth);
+                    click_current=(int)((x1-margin)/eachWidth);
 
-                    if(current!=old_current){
-
-                        old_current=current;
-                        if(listener!=null){
-                            listener.onRadioButtonChanged(options.get(current),current);
-                        }
-
-                        postInvalidate();
-                    }
+                    postInvalidate();
 
                 }
+
+
+                break;
+
+            case MotionEvent.ACTION_UP:
+
+                float x2 = event.getX();
+                float y2 = event.getY();
+
+                if(y2>height/2.0f-radius&&y2<height/2.0f+radius){
+
+                    int t = (int)((x2-margin)/eachWidth);
+
+                    if(t==click_current){
+
+                        current=t;
+
+                        if(current!=old_current){
+
+                            old_current=current;
+
+                            if(listener!=null){
+                                listener.onRadioButtonChanged(options.get(current),current);
+                            }
+
+                        }
+                    }
+                }
+
+                click_current=-1;
+                postInvalidate();
 
                 break;
 
@@ -137,8 +160,6 @@ public class RadioButtonView extends View {
         mPaint.setColor(frameColor);
         mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(strokeWidth);
-
-
 
         for(int i=0;i<options.size();i++){
 
@@ -192,6 +213,59 @@ public class RadioButtonView extends View {
 
     }
 
+    private void drawClickedFrame(Canvas canvas){
+
+        if(click_current!=-1){
+
+            mPaint=new Paint();
+            mPaint.setColor(frameColor);
+            mPaint.setAntiAlias(true);
+            mPaint.setStrokeWidth(strokeWidth);
+            mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+
+            Path path=new Path();
+
+            if(click_current==0){
+
+                path.moveTo(margin,height/2.0f);
+
+                path.cubicTo(margin,height/2.0f-radius*k,margin+radius*(1-k),height/2.0f-radius,margin+radius,height/2.0f-radius);
+                path.lineTo(margin+eachWidth,height/2.0f-radius);
+                path.lineTo(margin+eachWidth,height/2.0f+radius);
+                path.lineTo(margin+radius,height/2.0f+radius);
+                path.cubicTo(margin+radius*(1-k),height/2.0f+radius,margin,height/2.0f+radius*k,margin,height/2.0f);
+                path.close();
+
+
+            }else if(click_current==(options.size()-1)){
+
+                path.moveTo(width-margin,height/2.0f);
+
+                path.cubicTo(width-margin,height/2.0f-radius*k,width-margin-radius*(1-k),height/2.0f-radius,width-margin-radius,height/2.0f-radius);
+                path.lineTo(width-margin-eachWidth,height/2.0f-radius);
+                path.lineTo(width-margin-eachWidth,height/2.0f+radius);
+                path.lineTo(width-margin-radius,height/2.0f+radius);
+                path.cubicTo(width-margin-radius*(1-k),height/2.0f+radius,width-margin,height/2.0f+radius*k,width-margin,height/2.0f);
+                path.close();
+
+            }
+            else {
+
+                path.moveTo(margin+click_current*eachWidth,height/2.0f-radius);
+                path.lineTo(margin+(click_current+1)*eachWidth,height/2.0f-radius);
+                path.lineTo(margin+(click_current+1)*eachWidth,height/2.0f+radius);
+                path.lineTo(margin+click_current*eachWidth,height/2.0f+radius);
+                path.close();
+
+            }
+
+            canvas.drawPath(path,mPaint);
+
+
+        }
+
+    }
+
 
     private void drawText(Canvas canvas){
 
@@ -203,7 +277,7 @@ public class RadioButtonView extends View {
 
         for(int i =0;i<options.size();i++){
 
-            if(i==current){
+            if(i==current||i==click_current){
                 mPaint.setColor(textColor);
             }else {
                 mPaint.setColor(frameColor);
@@ -225,7 +299,7 @@ public class RadioButtonView extends View {
         TypedArray typedArray = getContext().obtainStyledAttributes(attributeSet, R.styleable.RadioButtonView);
 
         margin=typedArray.getDimension(R.styleable.RadioButtonView_margin,4.0f);
-        strokeWidth=typedArray.getDimension(R.styleable.RadioButtonView_strokeWidth,3.0f);
+        strokeWidth=typedArray.getDimension(R.styleable.RadioButtonView_strokeWidth,2.0f);
         frameColor=typedArray.getColor(R.styleable.RadioButtonView_frameColor,Color.WHITE);
         textColor=typedArray.getColor(R.styleable.RadioButtonView_textColor,BLUE);
 
@@ -246,9 +320,10 @@ public class RadioButtonView extends View {
 
         float ew = (width-2*margin)/length;
         float eh = (height-2*margin)/2;
-        radius = (ew > eh ? eh : ew)*0.5f;
 
-        textSize=radius;
+        radius = ew > eh ? eh : ew;
+
+        textSize=radius*0.7f;
 
     }
 
