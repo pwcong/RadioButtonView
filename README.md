@@ -23,7 +23,7 @@ To get a Git project into your build:
 ## Step 2. Add the dependency
 ```	
 	dependencies {
-	        compile 'com.github.pwcong:RadioButtonView:v1.0.0'
+	        compile 'com.github.pwcong:RadioButtonView:v1.0.2'
 	}
 
 ```
