@@ -94,6 +94,10 @@ To get a Git project into your build:
 
 # Recently
 
+## v1.0.2
+
+添加默认属性。
+
 ## v1.0.1
 
 * 修复边距过大问题调节字体大小
