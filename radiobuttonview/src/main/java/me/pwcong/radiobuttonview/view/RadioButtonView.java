@@ -106,7 +106,7 @@ public class RadioButtonView extends View {
                 float x1 = event.getX();
                 float y1 = event.getY();
 
-                if(y1>height/2.0f-radius&&y1<height/2.0f+radius){
+                if(y1>height/2.0f-radius&&y1<height/2.0f+radius&&x1>margin&&x1<width-margin){
 
                     click_current=(int)((x1-margin)/eachWidth);
 
@@ -122,7 +122,7 @@ public class RadioButtonView extends View {
                 float x2 = event.getX();
                 float y2 = event.getY();
 
-                if(y2>height/2.0f-radius&&y2<height/2.0f+radius){
+                if(y2>height/2.0f-radius&&y2<height/2.0f+radius&&x2>margin&&x2<width-margin){
 
                     int t = (int)((x2-margin)/eachWidth);
 
