@@ -1,4 +1,4 @@
-package me.pwcong.radiobuttonviewdemo
+package com.github.pwcong.radiobuttonview
 
 import org.junit.Test
 

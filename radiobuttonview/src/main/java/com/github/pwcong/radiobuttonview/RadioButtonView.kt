@@ -1,4 +1,4 @@
-package me.pwcong.radiobuttonview
+package com.github.pwcong.radiobuttonview
 
 import android.content.Context
 import android.graphics.Canvas

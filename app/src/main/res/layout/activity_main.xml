@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:background="#2196F3">
 
-    <me.pwcong.radiobuttonview.RadioButtonView
+    <com.github.pwcong.radiobuttonview.RadioButtonView
         android:id="@+id/rbv_1"
         android:layout_width="500dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true" />
 
-    <me.pwcong.radiobuttonview.RadioButtonView
+    <com.github.pwcong.radiobuttonview.RadioButtonView
         android:id="@+id/rbv_2"
         android:layout_width="300dp"
         android:layout_height="80dp"
@@ -23,7 +23,7 @@
         app:stroke_width="3dp"
         app:text_color="#FFFFFF" />
 
-    <me.pwcong.radiobuttonview.RadioButtonView
+    <com.github.pwcong.radiobuttonview.RadioButtonView
         android:id="@+id/rbv_3"
         android:layout_width="400dp"
         android:layout_height="100dp"

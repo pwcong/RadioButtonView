@@ -1,12 +1,12 @@
-package me.pwcong.radiobuttonviewdemo
+package com.github.pwcong.radiobuttonviewdemo
 
 import android.os.Bundle
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import me.pwcong.radiobuttonview.RadioButtonView
-import me.pwcong.radiobuttonview.RadioButtonView.OnRadioButtonChangedListener
+import com.github.pwcong.radiobuttonview.RadioButtonView
+import com.github.pwcong.radiobuttonview.RadioButtonView.OnRadioButtonChangedListener
 
 class MainActivity : AppCompatActivity() {
     private var layout: RelativeLayout? = null

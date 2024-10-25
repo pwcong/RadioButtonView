@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "me.pwcong.radiobuttonview"
+    namespace = "com.github.pwcong.radiobuttonview"
     compileSdk = 34
 
     defaultConfig {

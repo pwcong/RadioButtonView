@@ -15,7 +15,7 @@ see https://jitpack.io/#pwcong/RadioButtonView
 ## Step 1. Add it in Layout
 
 ```
-<me.pwcong.radiobuttonview.RadioButtonView
+<com.github.pwcong.radiobuttonview.RadioButtonView
     android:id="@+id/rbv_1"
     android:layout_width="500dp"
     android:layout_height="100dp" 

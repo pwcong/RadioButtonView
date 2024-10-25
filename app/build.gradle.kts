@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "me.pwcong.radiobuttonviewdemo"
+    namespace = "com.github.pwcong.radiobuttonviewdemo"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "me.pwcong.radiobuttonviewdemo"
+        applicationId = "com.github.pwcong.radiobuttonviewdemo"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
